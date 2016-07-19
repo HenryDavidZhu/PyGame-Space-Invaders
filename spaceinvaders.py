@@ -108,13 +108,13 @@ def main():
             enemy.display(screen)
 
         selected_enemy = random.randint(0, len(enemies) - 1)
-        shoot_probability = random.randint(0, 18)
+        shoot_probability = random.randint(0, 20)
 
         if shoot_probability == 5:
             bullet_x = enemies[selected_enemy].xpos
             bullet_y = enemies[selected_enemy].ypos
 
-            bad_bullet = Sprite("enemy_bullet.png", bullet_x, bullet_y + 50)
+            bad_bullet = Sprite("enemy_bullet.png", bullet_x + 17, bullet_y + 45)
             bullets_bad.append(bad_bullet)
 
         for bullet in bullets_good: # Draw the bullets onto the screen
