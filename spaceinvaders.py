@@ -114,6 +114,9 @@ def main():
             bullet_x = enemies[selected_enemy].xpos
             bullet_y = enemies[selected_enemy].ypos
 
+            mixer.music.load("enemy_fire.wav")
+            mixer.music.play(0)
+
             bad_bullet = Sprite("enemy_bullet.png", bullet_x + 17, bullet_y + 45)
             bullets_bad.append(bad_bullet)
 
@@ -123,7 +126,11 @@ def main():
 
             for enemy in enemies:
                 if bullet.intersect(enemy) == 1:
-                    enemies.remove(enemy)
+                    # Play the sound effect of shooting a bullet
+                    mixer.music.load("hit.wav")
+                    mixer.music.play(0)
+
+                    enemies.remove(enemy) # Remove the enemy from the list of enemies
 
             bullet.display(screen)
 
@@ -144,6 +151,10 @@ def main():
                 sys.exit()
             if keyevent.type == KEYDOWN:
                 if keyevent.key == K_UP:
+                    # Play the sound effect of shooting a bullet
+                    mixer.music.load("fire.wav")
+                    mixer.music.play(0)
+
                     # Create a new bullet and add it to the list of bullets fired by the hero
                     bullet = Sprite("bullet.png", fighter.xpos + 34, fighter.ypos - 20)
                     bullets_good.append(bullet)
